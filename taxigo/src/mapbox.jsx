@@ -1,8 +1,7 @@
-import React, { useRef, useEffect, forwardRef } from 'react';
+import React, { useRef, useEffect, useState, forwardRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-// Apply this style to your CSS or in a style tag
 const mapStyles = {
   width: '100%',
   height: '500px',
@@ -19,59 +18,71 @@ const MapComponent = forwardRef(({
 }, ref) => {
   const mapRef = useRef(null);
   const mapContainerRef = useRef(null);
+  const [cityName, setCityName] = useState('');
 
   useEffect(() => {
-    try {
-      // Set token directly
-      mapboxgl.accessToken = 'pk.eyJ1Ijoic2hpdmFtMDg4NSIsImEiOiJjbTJodXBtdDMwYWE2Mm1xeDM2MDF1aGc3In0.GYvmqDPdmG6iAFDjl8jsRQ';
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2hpdmFtMDg4NSIsImEiOiJjbTJodXBtdDMwYWE2Mm1xeDM2MDF1aGc3In0.GYvmqDPdmG6iAFDjl8jsRQ';
 
-      if (!mapContainerRef.current) {
-        console.error('Map container ref is not available');
-        return;
-      }
-
-      console.log('Initializing map...');
-
-      const map = new mapboxgl.Map({
-        container: mapContainerRef.current,
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: initialCenter,
-        zoom: initialZoom,
-        preserveDrawingBuffer: true
-      });
-
-      // Add load handler
-      map.on('load', () => {
-        console.log('Map loaded successfully');
-      });
-
-      // Handle map load errors
-      map.on('error', (e) => {
-        console.error('Mapbox error:', e);
-      });
-
-      // Store map instance
-      mapRef.current = map;
-
-      // Handle ref
-      if (ref) {
-        if (typeof ref === 'function') {
-          ref(map);
-        } else {
-          ref.current = map;
-        }
-      }
-
-      return () => {
-        if (map) {
-          console.log('Removing map...');
-          map.remove();
-        }
-      };
-    } catch (error) {
-      console.error('Error initializing map:', error);
+    if (!mapContainerRef.current) {
+      console.error('Map container ref is not available');
+      return;
     }
+
+    const map = new mapboxgl.Map({
+      container: mapContainerRef.current,
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: initialCenter,
+      zoom: initialZoom,
+      preserveDrawingBuffer: true
+    });
+
+    map.on('load', () => {
+      console.log('Map loaded successfully');
+      fetchCityName(map.getCenter());
+    });
+
+    map.on('moveend', () => {
+      fetchCityName(map.getCenter());
+    });
+
+    map.on('error', (e) => {
+      console.error('Mapbox error:', e);
+    });
+
+    mapRef.current = map;
+
+    if (ref) {
+      if (typeof ref === 'function') {
+        ref(map);
+      } else {
+        ref.current = map;
+      }
+    }
+
+    return () => {
+      if (map) {
+        console.log('Removing map...');
+        map.remove();
+      }
+    };
   }, [initialCenter, initialZoom, ref]);
+
+  const fetchCityName = async (center) => {
+    try {
+      const response = await fetch(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${center.lng},${center.lat}.json?access_token=${mapboxgl.accessToken}`
+      );
+      const data = await response.json();
+      if (data.features && data.features.length > 0) {
+        const cityFeature = data.features.find(feature => feature.place_type.includes('place'));
+        if (cityFeature) {
+          setCityName(cityFeature.text);
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching city name:', error);
+    }
+  };
 
   useEffect(() => {
     const map = mapRef.current;
@@ -91,40 +102,33 @@ const MapComponent = forwardRef(({
         }]
       };
 
-      map.on('style.load', () => {
-        console.log('Style loaded, adding route...');
-        addRouteToMap();
-      });
+      if (map.getSource('route')) {
+        map.getSource('route').setData(routeGeoJSON);
+      } else {
+        map.addSource('route', {
+          type: 'geojson',
+          data: routeGeoJSON,
+        });
 
-      function addRouteToMap() {
-        if (map.getSource('route')) {
-          map.getSource('route').setData(routeGeoJSON);
-        } else {
-          map.addSource('route', {
-            type: 'geojson',
-            data: routeGeoJSON,
-          });
+        map.addLayer({
+          id: 'routeline-active',
+          type: 'line',
+          source: 'route',
+          layout: {
+            'line-join': 'round',
+            'line-cap': 'round',
+          },
+          paint: {
+            'line-color': '#3887be',
+            'line-width': 5,
+          },
+        });
+      }
 
-          map.addLayer({
-            id: 'routeline-active',
-            type: 'line',
-            source: 'route',
-            layout: {
-              'line-join': 'round',
-              'line-cap': 'round',
-            },
-            paint: {
-              'line-color': '#3887be',
-              'line-width': 5,
-            },
-          });
-        }
-
-        if (route.coordinates.length > 0) {
-          const bounds = new mapboxgl.LngLatBounds();
-          route.coordinates.forEach(coord => bounds.extend(coord));
-          map.fitBounds(bounds, { padding: 50 });
-        }
+      if (route.coordinates.length > 0) {
+        const bounds = new mapboxgl.LngLatBounds();
+        route.coordinates.forEach(coord => bounds.extend(coord));
+        map.fitBounds(bounds, { padding: 50 });
       }
     } catch (error) {
       console.error('Error updating route:', error);
@@ -132,12 +136,15 @@ const MapComponent = forwardRef(({
   }, [route]);
 
   return (
-    <div 
-      ref={mapContainerRef}
-      style={mapStyles}
-      aria-label="Map"
-      role="application"
-    />
+    <div>
+      <div 
+        ref={mapContainerRef}
+        style={mapStyles}
+        aria-label="Map"
+        role="application"
+      />
+      {cityName && <div className="city-name">City: {cityName}</div>}
+    </div>
   );
 });
 

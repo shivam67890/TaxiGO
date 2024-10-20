@@ -123,6 +123,7 @@ const TaxiGoRidePage = () => {
 
       // Get and set the route
       const routeGeometry = await getRoute(pickupCoords, dropoffCoords);
+      console.log('Route geometry:', routeGeometry);
       setRoute(routeGeometry);
 
     } catch (error) {
