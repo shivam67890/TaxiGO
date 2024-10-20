@@ -1,68 +1,66 @@
 .taxi-go-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #fdf6e3; /* TaxiGO light theme background */
-  }
-  
-  .form-section {
-    width: 30%;
-    background-color: #fff9e6;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-section h2 {
-    font-family: 'Arial', sans-serif;
-    color: #333;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #333;
-  }
-  
-  .form-group input, .form-group select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
-  }
-  
-  .search-btn {
-    width: 100%;
-    background-color: #333;
-    color: #fff;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .map-section {
-    width: 65%;
-    height: 500px;
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: #eceff1;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .map-placeholder {
-    color: #888;
-    font-size: 18px;
-    font-family: Arial, sans-serif;
-  }
-  
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px;
+  height: 100vh;
+  background-color: #fdf6e3;
+}
+
+.form-section {
+  width: 350px; /* Fixed width */
+  background-color: #fff9e6;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid red;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h2 {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+
+.form-group input, .form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.search-btn {
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.map-section {
+  width: calc(100% - 370px); /* Remaining space */
+  height: 100%; /* Full height */
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #eceff1;
+  border: 1px solid blue;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-placeholder {
+  color: #888;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}

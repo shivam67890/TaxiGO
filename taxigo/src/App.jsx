@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import TaxiGoRidePage from './ride.jsx';
 import Nav from './nav.jsx';
 import MainContent from './maincontent.jsx';
+import MapComponent from './mapbox.jsx';  // Import the MapComponent
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<MainContent />} />
           <Route path="/ride" element={<TaxiGoRidePage />} />
+          <Route path="/map" element={<MapComponent />} /> {/* New route for map */}
         </Routes>
       </div>
     </Router>
