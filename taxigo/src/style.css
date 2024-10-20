@@ -3,13 +3,16 @@ body, html {
     padding: 0;
     font-family: 'Arial', sans-serif;
     color: #333;
-    background-color: #FFD700;
+    background-color: #ffed87;
+    scroll-behavior: smooth;
 }
 
 .container {
+    margin-top: 75px; /* Adjust this to match the height of your nav */
     display: flex;
-    height: 100vh;
+    height: calc(100vh - 80px); /* Subtract the height of the navbar to ensure full viewport coverage */
 }
+
 /* Adjust the nav container */
 nav {
     background-color: rgba(0, 0, 0, 0.9);
@@ -22,10 +25,8 @@ nav {
     width: 100%;
     top: 0;
     z-index: 1000;
-    border-radius: 0 0 15px 15px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-
 /* Logo adjustments */
 .logo-img {
     height: 40px;
@@ -34,7 +35,9 @@ nav {
     margin-left: 0.5rem; /* Reduced margin to shift logo left */
     overflow: hidden;
 }
-
+#package a{
+    color: rgb(0, 0, 0) !important;
+}
 /* Navigation links styles */
 nav ul {
     display: flex;
@@ -47,6 +50,17 @@ nav ul li {
     margin-right: 1.5rem;
     font-weight: bold;
     color: #ffffff;
+}
+
+/* Add styles for anchor (<a>) inside <li> */
+nav ul li a {
+    color: #ffffff;  /* Make the link color the same as li */
+    text-decoration: none;  /* Remove underline from the link */
+    font-weight: bold; /* Ensure consistency with other li text */
+}
+
+nav ul li a:hover {
+    color: #FFD700;  /* Add hover effect if needed */
 }
 
 /* Adjustments for nav actions */
@@ -77,6 +91,41 @@ button:hover {
     background-color: #555;
 }
 
+/* Ride Navigation Bar Styles */
+.nav-ride {
+    background-color: rgba(255, 255, 255, 0.9); /* Dark background */
+    color: #000000; /* Text color */
+    padding: 1rem 1rem; /* Padding */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.nav-ride ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-ride ul li {
+    margin-right: 1.5rem; /* Space between items */
+    font-weight: bold; /* Bold text */
+}
+
+.nav-ride ul li a {
+    color: #000000; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Ensure bold links */
+}
+
+.nav-ride ul li a:hover {
+    color: #FFD700; /* Hover effect */
+}
+
+/* Hide nav-actions in ride section */
+.nav-ride .nav-actions {
+    display: none; /* Hides the language, help, login, and signup options */
+}
+
 .left-section {
     flex: 1;
     background-color: rgba(255, 255, 255, 0.9);
@@ -85,7 +134,6 @@ button:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-radius: 15px;
     z-index: 1;
 }
 
@@ -106,7 +154,7 @@ button:hover {
     margin-bottom: 1.5rem;
     font-size: 1.2rem;
     font-weight: bold;
-    border-radius: 10px; /* Rounded corners */
+    border-radius: 10px; 
     border: 1px solid #ccc;
     background-color: #f7f7f7;
 }
@@ -126,12 +174,12 @@ button:hover {
 .price-button:hover {
     background-color: #444; /* Slight darkening on hover */
 }
+
 .right-section {
     flex: 1;
     background-image: url('./assets/sec.png');
     background-size: cover;
     background-position: center;
-    border-radius: 15px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -177,7 +225,6 @@ input[type="text"] {
     padding: 4rem 2rem;
     background-color: rgba(255, 255, 255, 0.9);
     color: #333;
-    border-radius: 15px;
 }
 
 .drive-image {
@@ -185,7 +232,6 @@ input[type="text"] {
     background-image: url('./assets/first.webp');
     background-size: cover;
     background-position: center;
-    border-radius: 8px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -257,4 +303,3 @@ input[type="text"] {
     border-radius: 50%;
     text-decoration: none;
 }
-
