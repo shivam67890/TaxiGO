@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaxiGO for Business</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .space-x-4 > * {
+            margin-right: 1rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-white {
+            color: white;
+        }
+
+        .text-black {
+            color: black;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+
+        /* Navigation */
+        .nav-section {
+            background-color: #fef08a;
+            padding: 1rem 0;
+        }
+
+        .nav-section img {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-color: #fff;
+            padding: 2rem 0;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .hero-section p {
+            color: #4a4a4a;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-section button {
+            background-color: #000;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero-section a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        /* Features Section */
+        .features-section {
+            background-color: #fef08a;
+            padding: 4rem 0;
+        }
+
+        .features-section h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+        .features-section h3 {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-line {
+            width: 2px;
+            background-color: #000;
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+        }
+
+        .feature-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #000;
+            border-radius: 50%;
+            position: absolute;
+            left: -5px;
+            top: 2rem;
+        }
+
+        .features-section .grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2rem;
+            position: relative;
+        }
+
+        @media (min-width: 768px) {
+            .features-section .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Footer */
+        .footer-section {
+            background-color: #000;
+            padding: 4rem 0;
+            color: white;
+        }
+
+        .footer-section h2 {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .footer-section .cta-arrow {
+            background-color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            margin-left: 1rem;
+        }
+
+        .footer-links {
+            margin-top: 2rem;
+        }
+
+        .footer-links a {
+            color: white;
+            display: block;
+            margin: 0.5rem 0;
+            transition: opacity 0.2s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.7;
+        }
+
+        .footer-section img {
+            width: 128px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-section">
+        <div class="container flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img src="logo.jpg" alt="TaxiGO Logo">
+                <span class="font-bold">Business</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span>My trips</span>
+                <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="grid">
+                <div>
+                    <h1>The best of TaxiGO<br>for your business</h1>
+                    <p>Uber for Business gives your organization more control, deeper insights, and features built for enterprise users. Manage and track business travel, meal programs, and more on one dashboard.</p>
+                    <div>
+                        <button>Get started</button>
+                        <a href="#">Check our solutions.</a>
+                    </div>
+                </div>
+                <div>
+                    <img src="1image.jpg" alt="Business professional using mobile app">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2>Get started with no upfront costs</h2>
+            <div class="relative">
+                <div class="timeline-line"></div>
+
+                <!-- Feature 1 -->
+                <div class="grid">
+                    <div>
+                        <img src="lap.jpg" alt="Dashboard interface">
+                    </div>
+                    <div class="relative pl-12">
+                        <div class="feature-dot"></div>
+                        <h3>Customize your travel and meal programs</h3>
+                        <p>Set your own policies, help ensure T&E compliance, and get full visibility into every ride and meal.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="grid">
+                    <div>
+                        <img src="phone.jpg" alt="Mobile app interface">
+                    </div>
+                    <div class="relative pl-12">
+                        <div class="feature-dot"></div>
+                        <h3>Onboard people at your own pace</h3>
+                        <p>Add individuals, specific teams, or your entire organization at once.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="grid">
+                    <div>
+                        <img src="credit.jpg" alt="Credit card illustration">
+                    </div>
+                    <div class="relative pl-12">
+                        <div class="feature-dot"></div>
+                        <h3>Set up amenities for customers</h3>
+                        <p>Send TaxiGO credit in the form of gift cards and vouchers for rides, meals, and more.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="flex items-center">
+                <h2>Sign up to drive</h2>
+                <a href="#" class="cta-arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="footer-links">
+                <img src="taxigo-logo.jpg" alt="TaxiGO Logo">
+                <nav>
+                    <a href="#">About us</a>
+                    <a href="#">Our offerings</a>
+                    <a href="#">Newsroom</a>
+                    <a href="#">Investors</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Careers</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

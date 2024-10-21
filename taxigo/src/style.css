@@ -7,11 +7,7 @@ body, html {
     scroll-behavior: smooth;
 }
 
-.container {
-    margin-top: 75px; /* Adjust this to match the height of your nav */
-    display: flex;
-    height: calc(100vh - 80px); /* Subtract the height of the navbar to ensure full viewport coverage */
-}
+
 
 /* Adjust the nav container */
 nav {

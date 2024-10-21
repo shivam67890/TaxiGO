@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drive With Us</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #FFE168;
+        }
+
+        .header {
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #FFE168;
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4rem 0;
+        }
+
+        .hero-content {
+            max-width: 500px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .cta-container {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .get-started {
+            background: #000;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+    
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .feature {
+            text-align: left;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .signup-requirements {
+            margin: 4rem 0;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .requirements-list {
+            list-style: none;
+        }
+
+        .requirements-list h2 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .requirements-list ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .requirements-list li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .image-container {
+            width: 150%;
+            height: 35\0px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .faq-section {
+            margin: 4rem 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            cursor: pointer;
+        }
+
+        .signup-cta {
+            background: #000;
+            color: white;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .signup-cta h2 {
+            font-size: 2.5rem;
+        }
+
+        footer {
+            background: #000;
+            color: white;
+            padding: 2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .footer-links li {
+            margin: 0.5rem 0;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .requirements-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <img src="logo.png" alt="TaxiGO" class="logo">
+        <div class="user-menu">
+            <a href="#" style="color: #000; text-decoration: none;">My trips</a>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Drive when you want, make what you need</h1>
+                <p class="subtitle">Earn on your own schedule.</p>
+                <div class="cta-container">
+                    <a href="#" class="get-started">get started</a>
+                    <a href="#" style="color: #000;">Already have an account? Sign in.</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="lady.jpg" alt="Driver illustration" style="max-width: 500px;">
+            </div>
+        </section>
+
+        <section>
+            <h2 style="font-size: 2rem; margin-bottom: 2rem;">Why drive with us</h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">📅</div>
+                    <h3>Set your own hours</h3>
+                    <p>You decide when and how often you drive.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💰</div>
+                    <h3>Get paid fast</h3>
+                    <p>Weekly payments in your bank account.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">👥</div>
+                    <h3>Get support at every turn</h3>
+                    <p>If there's anything that you need, you can reach us anytime.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="signup-requirements">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem;">Here's what you need to sign up</h2>
+            <div class="requirements-grid">
+                <div class="requirements-list">
+                    <h2>Requirements</h2>
+                    <ul>
+                        <li>Be at least 18 years old</li>
+                        <li>Clear a background screening</li>
+                    </ul>
+
+                    <h2>Documents</h2>
+                    <ul>
+                        <li>Valid driver's license (private or commercial), if you plan to drive</li>
+                        <li>Proof of residency in your city, state or province</li>
+                        <li>Car documents such as commercial insurance, vehicle registration certificate, permit</li>
+                    </ul>
+
+                    <h2>Signup process</h2>
+                    <ul>
+                        <li>Visit the nearest Partner Seva Kendra in your city</li>
+                        <li>Submit documents and photo</li>
+                        <li>Provide information for a background check</li>
+                    </ul>
+                </div>
+                <div class="image-container">
+                    <img src="last.jpg" alt="Car inspection">
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem;">Frequently asked questions</h2>
+            <div class="faq-item">
+                <p>Can I drive with TaxiGO in my city?</p>
+            </div>
+            <div class="faq-item">
+                <p>What are the requirements to drive with TaxiGO?</p>
+            </div>
+            <div class="faq-item">
+                <p>Is the TaxiGO platform safe?</p>
+            </div>
+            <div class="faq-item">
+                <p>Do I need my own car?</p>
+            </div>
+        </section>
+
+        <section class="signup-cta">
+            <h2>Sign up to drive</h2>
+            <div style="background: white; padding: 1rem; border-radius: 50%;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <img src="logo-white.png" alt="TaxiGO" style="height: 40px; margin-bottom: 1rem;">
+        <ul class="footer-links">
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Our offerings</a></li>
+            <li><a href="#">Newsroom</a></li>
+            <li><a href="#">Investors</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+        </ul>
+    </footer>
+</body>
+
+</html>
