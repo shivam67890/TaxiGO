@@ -19,6 +19,7 @@ const MapComponent = forwardRef(({
   const mapRef = useRef(null);
   const mapContainerRef = useRef(null);
   const [cityName, setCityName] = useState('');
+  const [currentLocationMarker, setCurrentLocationMarker] = useState(null);
 
   useEffect(() => {
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2hpdmFtMDg4NSIsImEiOiJjbTJodXBtdDMwYWE2Mm1xeDM2MDF1aGc3In0.GYvmqDPdmG6iAFDjl8jsRQ';
@@ -35,6 +36,11 @@ const MapComponent = forwardRef(({
       zoom: initialZoom,
       preserveDrawingBuffer: true
     });
+
+    const marker = new mapboxgl.Marker()
+      .setLngLat(initialCenter)
+      .addTo(map);
+    setCurrentLocationMarker(marker);
 
     map.on('load', () => {
       console.log('Map loaded successfully');
@@ -134,6 +140,12 @@ const MapComponent = forwardRef(({
       console.error('Error updating route:', error);
     }
   }, [route]);
+
+  useEffect(() => {
+    if (currentLocationMarker) {
+      currentLocationMarker.setLngLat(initialCenter);
+    }
+  }, [initialCenter, currentLocationMarker]);
 
   return (
     <div>

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ride.css';
 import MapComponent from './mapbox';
 
@@ -13,14 +14,43 @@ const TaxiGoRidePage = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [currentLocation, setCurrentLocation] = useState(null);
+  const [distance, setDistance] = useState(null);
+  const [showRideDetails, setShowRideDetails] = useState(false);
   const mapComponentRef = useRef(null);
+  const navigate = useNavigate();
+
+  const basePrices = {
+    bike: 10,
+    economy: 20,
+    premium: 30
+  };
+
+  const perKmRates = {
+    bike: 5,
+    economy: 10,
+    premium: 15
+  };
 
   useEffect(() => {
     // Get user's current location
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setCurrentLocation([position.coords.longitude, position.coords.latitude]);
+        async (position) => {
+          const coords = [position.coords.longitude, position.coords.latitude];
+          setCurrentLocation(coords);
+
+          // Fetch the address for the current location
+          try {
+            const response = await fetch(
+              `https://api.mapbox.com/geocoding/v5/mapbox.places/${coords[0]},${coords[1]}.json?access_token=${MAPBOX_TOKEN}`
+            );
+            const data = await response.json();
+            if (data.features && data.features.length > 0) {
+              setPickupLocation(data.features[0].place_name);
+            }
+          } catch (error) {
+            console.error('Error fetching address for current location:', error);
+          }
         },
         (error) => {
           console.error('Error getting current location:', error);
@@ -88,9 +118,11 @@ const TaxiGoRidePage = () => {
       const data = await response.json();
 
       if (data.routes && data.routes.length > 0) {
+        const route = data.routes[0];
+        setDistance(route.distance / 1000); // Convert meters to kilometers
         return {
           type: 'LineString',
-          coordinates: data.routes[0].geometry.coordinates
+          coordinates: route.geometry.coordinates
         };
       }
       throw new Error('No route available');
@@ -125,6 +157,7 @@ const TaxiGoRidePage = () => {
       const routeGeometry = await getRoute(pickupCoords, dropoffCoords);
       console.log('Route geometry:', routeGeometry);
       setRoute(routeGeometry);
+      setShowRideDetails(true);
 
     } catch (error) {
       setError(error.message || 'Error finding route. Please try again.');
@@ -134,73 +167,109 @@ const TaxiGoRidePage = () => {
     }
   };
 
+  const handleBack = () => {
+    setShowRideDetails(false);
+    setRoute(null);
+    setDistance(null);
+  };
+
+  const calculatePrice = (basePrice, perKmRate) => {
+    return basePrice + (distance * perKmRate);
+  };
+
+  const handleRideOptionClick = () => {
+    navigate('/payment');
+  };
+
   return (
     <div className="taxi-go-container">
-      <div className="form-section">
-        <h2>Book Your Ride</h2>
-        {error && <div className="error-message">{error}</div>}
-        <div className="form-group">
-          <label>Pickup Location</label>
-          <input
-            type="text"
-            placeholder="Enter pickup location (e.g., Times Square, New York)"
-            value={pickupLocation}
-            onChange={(e) => {
-              setPickupLocation(e.target.value);
-              fetchSuggestions(e.target.value, setPickupSuggestions);
-            }}
-          />
-          {pickupSuggestions.length > 0 && (
-            <ul className="suggestions-list">
-              {pickupSuggestions.map((suggestion) => (
-                <li
-                  key={suggestion.id}
-                  onClick={() => {
-                    setPickupLocation(suggestion.place_name);
-                    setPickupSuggestions([]);
-                  }}
-                >
-                  {suggestion.place_name}
-                </li>
-              ))}
-            </ul>
-          )}
+      {showRideDetails ? (
+        <div className="ride-details-section">
+          <button className="back-btn" onClick={handleBack}>Back</button>
+          <h2>Ride Details</h2>
+          <p>Distance: {distance.toFixed(2)} km</p>
+          <div className="ride-options">
+            <div className="ride-option" onClick={handleRideOptionClick}>
+              <h3>Bike</h3>
+              <p>Estimated Price: ₹{calculatePrice(basePrices.bike, perKmRates.bike).toFixed(2)}</p>
+            </div>
+            <div className="ride-option" onClick={handleRideOptionClick}>
+              <h3>Economy Cab</h3>
+              <p>Estimated Price: ₹{calculatePrice(basePrices.economy, perKmRates.economy).toFixed(2)}</p>
+            </div>
+            <div className="ride-option" onClick={handleRideOptionClick}>
+              <h3>Premium Cab</h3>
+              <p>Estimated Price: ₹{calculatePrice(basePrices.premium, perKmRates.premium).toFixed(2)}</p>
+            </div>
+          </div>
         </div>
-        <div className="form-group">
-          <label>Drop-off Location</label>
-          <input
-            type="text"
-            placeholder="Enter drop-off location (e.g., Central Park, New York)"
-            value={dropoffLocation}
-            onChange={(e) => {
-              setDropoffLocation(e.target.value);
-              fetchSuggestions(e.target.value, setDropoffSuggestions);
-            }}
-          />
-          {dropoffSuggestions.length > 0 && (
-            <ul className="suggestions-list">
-              {dropoffSuggestions.map((suggestion) => (
-                <li
-                  key={suggestion.id}
-                  onClick={() => {
-                    setDropoffLocation(suggestion.place_name);
-                    setDropoffSuggestions([]);
-                  }}
-                >
-                  {suggestion.place_name}
-                </li>
-              ))}
-            </ul>
-          )}
+      ) : (
+        <div className="form-section">
+          <h2>Book Your Ride</h2>
+          {error && <div className="error-message">{error}</div>}
+          <div className="form-group">
+            <label>Pickup Location</label>
+            <input
+              type="text"
+              placeholder="Enter pickup location (e.g., Times Square, New York)"
+              value={pickupLocation}
+              onChange={(e) => {
+                setPickupLocation(e.target.value);
+                fetchSuggestions(e.target.value, setPickupSuggestions);
+              }}
+            />
+            {pickupSuggestions.length > 0 && (
+              <ul className="suggestions-list">
+                {pickupSuggestions.map((suggestion) => (
+                  <li
+                    key={suggestion.id}
+                    onClick={() => {
+                      setPickupLocation(suggestion.place_name);
+                      setPickupSuggestions([]);
+                    }}
+                  >
+                    {suggestion.place_name}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <div className="form-group">
+            <label>Drop-off Location</label>
+            <input
+              type="text"
+              placeholder="Enter drop-off location (e.g., Central Park, New York)"
+              value={dropoffLocation}
+              onChange={(e) => {
+                setDropoffLocation(e.target.value);
+                fetchSuggestions(e.target.value, setDropoffSuggestions);
+              }}
+            />
+            {dropoffSuggestions.length > 0 && (
+              <ul className="suggestions-list">
+                {dropoffSuggestions.map((suggestion) => (
+                  <li
+                    key={suggestion.id}
+                    onClick={() => {
+                      setDropoffLocation(suggestion.place_name);
+                      setDropoffSuggestions([]);
+                    }}
+                  >
+                    {suggestion.place_name}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <button
+            className="search-btn"
+            onClick={handleSearch}
+            disabled={loading || !pickupLocation || !dropoffLocation}
+          >
+            {loading ? 'Searching...' : 'Search Route'}
+          </button>
         </div>
-        <button
-          className="search-btn"
-          onClick={handleSearch}
-          disabled={loading || !pickupLocation || !dropoffLocation}
-        >
-          {loading ? 'Searching...' : 'Search Route'}
-        </button>
-      </div>
+      )}
 
       <div className="map-section">
         {currentLocation && (

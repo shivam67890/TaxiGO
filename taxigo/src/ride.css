@@ -2,21 +2,22 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 20px;
-  height: 100vh;
+  padding: 110px;
+  gap: 15px;
+  height: 70vh;
   background-color: #fdf6e3;
 }
 
-.form-section {
+.form-section, .ride-details-section {
   width: 350px; /* Fixed width */
   background-color: #fff9e6;
-  padding: 20px;
+  padding: 40px;
   border-radius: 10px;
   border: 1px solid red;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.form-section h2 {
+.form-section h2, .ride-details-section h2 {
   font-family: 'Arial', sans-serif;
   color: #333;
 }
@@ -25,42 +26,73 @@
   margin-bottom: 15px;
 }
 
-
-.form-group input, .form-group select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 14px;
+.ride-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.search-btn {
-  width: 100%;
-  background-color: #333;
+.ride-option {
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.ride-option:hover {
+  border-color: #007bff;
+  background-color: #f0f8ff;
+}
+
+.ride-option:active {
+  border-color: #0056b3;
+  background-color: #e0e8ff;
+}
+
+.ride-option h3 {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+.ride-option p {
+  margin: 5px 0 0;
+  font-family: 'Arial', sans-serif;
+  color: #666;
+}
+
+.back-btn {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
   color: #fff;
-  padding: 12px;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+  background-color: #0056b3;
+}
+
+.back-btn:active {
+  background-color: #003f7f;
 }
 
 .map-section {
-  width: calc(100% - 370px); /* Remaining space */
-  height: 100%; /* Full height */
+  flex-grow: 1; /* Allow the map section to grow and take available space */
+  height: 100%; /* Ensure the map section takes the full height */
+  background-color: #e6f7ff; /* Light blue background for the map section */
   border-radius: 10px;
-  overflow: hidden;
-  background-color: #eceff1;
-  border: 1px solid blue;
+  border: 1px solid #ccc;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Ensure the map doesn't overflow its container */
 }
 
-.map-placeholder {
-  color: #888;
-  font-size: 18px;
-  font-family: Arial, sans-serif;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
+.map-container {
+  width: 100%;
+  height: 100%;
 }
