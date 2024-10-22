@@ -5,7 +5,7 @@ import TaxiGoRidePage from './ride.jsx';
 import Nav from './nav.jsx';
 import MainContent from './maincontent.jsx';
 import MapComponent from './mapbox.jsx';
-import PaymentPage from './payment.jsx';  // Import the PaymentPage
+import PaymentPage from './paymentpage.jsx';  // Import the PaymentPage
 import BusinessPage from './buisseness.jsx'; // Import the BusinessPage
 import Drivepage from './drive.jsx'; 
 

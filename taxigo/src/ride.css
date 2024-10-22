@@ -11,7 +11,7 @@
 .form-section, .ride-details-section {
   width: 350px; /* Fixed width */
   background-color: #fff9e6;
-  padding: 40px;
+  padding: 25px;
   border-radius: 10px;
   border: 1px solid red;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -23,13 +23,13 @@
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 15px;  
 }
 
 .ride-options {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
 .ride-option {
@@ -91,7 +91,12 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden; /* Ensure the map doesn't overflow its container */
 }
-
+.ride-option img {
+  width: 120px;
+  position: absolute;
+  height: 60px;
+  left: 23%;
+}
 .map-container {
   width: 100%;
   height: 100%;

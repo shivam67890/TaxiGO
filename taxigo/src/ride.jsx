@@ -177,8 +177,8 @@ const TaxiGoRidePage = () => {
     return basePrice + (distance * perKmRate);
   };
 
-  const handleRideOptionClick = () => {
-    navigate('/payment');
+  const handleRideOptionClick = (rideType, estimatedPrice) => {
+    navigate('/payment', { state: { rideType, estimatedPrice } });
   };
 
   return (
@@ -189,15 +189,18 @@ const TaxiGoRidePage = () => {
           <h2>Ride Details</h2>
           <p>Distance: {distance.toFixed(2)} km</p>
           <div className="ride-options">
-            <div className="ride-option" onClick={handleRideOptionClick}>
+            <div className="ride-option" onClick={() => handleRideOptionClick('Bike', calculatePrice(basePrices.bike, perKmRates.bike))}>
+              <img src="/src/assets/bike.jpg" alt="Bike" className="ride-option-image" />
               <h3>Bike</h3>
               <p>Estimated Price: ₹{calculatePrice(basePrices.bike, perKmRates.bike).toFixed(2)}</p>
             </div>
-            <div className="ride-option" onClick={handleRideOptionClick}>
+            <div className="ride-option" onClick={() => handleRideOptionClick('Economy Cab', calculatePrice(basePrices.economy, perKmRates.economy))}>
+              <img src="/src/assets/caar.jpg" alt="Economy Cab" className="ride-option-image" />
               <h3>Economy Cab</h3>
               <p>Estimated Price: ₹{calculatePrice(basePrices.economy, perKmRates.economy).toFixed(2)}</p>
             </div>
-            <div className="ride-option" onClick={handleRideOptionClick}>
+            <div className="ride-option" onClick={() => handleRideOptionClick('Premium Cab', calculatePrice(basePrices.premium, perKmRates.premium))}>
+              <img src="/src/assets/bigcar.jpg" alt="Premium Cab" className="ride-option-image" />
               <h3>Premium Cab</h3>
               <p>Estimated Price: ₹{calculatePrice(basePrices.premium, perKmRates.premium).toFixed(2)}</p>
             </div>
