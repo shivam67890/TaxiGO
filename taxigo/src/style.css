@@ -6,6 +6,89 @@ body, html {
     background-color: #ffed87;
     scroll-behavior: smooth;
 }
+.suggestions {
+    padding: 2rem;
+    margin-top: 2rem;
+    
+}
+
+.suggestions h2 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+}
+
+.card-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.suggestion-card {
+    background-color: #7f7f7f;
+    padding: 1.5rem;
+    border-radius: 12px;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-dark);
+}
+.suggestion-card img{
+    border-radius: 12px;
+
+}
+.driver-section,
+.business-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding: 4rem 2rem;
+    align-items: center;
+}
+
+.section-image {
+    border-radius: 12px;
+    overflow: hidden;
+    position: absolute;
+    left: 55%;
+    height: 500px;
+    width: 30%;
+}
+
+.section-image img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+}
+
+.section-content h1,
+.section-content h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+
+.section-content p {
+    font-size: 1.1rem;
+    color: #999;
+    margin-bottom: 2rem;
+}
+.white-background {
+    background-color: white;
+    padding: 20px;
+}
+.get-started {
+    background-color: black;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    text-decoration: none;
+    display: inline-block;
+}
+.bgwhite{
+background-color: white;
+}
 
 
 
@@ -173,7 +256,7 @@ button:hover {
 
 .right-section {
     flex: 1;
-    background-image: url('./assets/sec.png');
+    background-image: url('./assets/sec.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -221,29 +304,6 @@ input[type="text"] {
     padding: 4rem 2rem;
     background-color: rgba(255, 255, 255, 0.9);
     color: #333;
-}
-
-.drive-image {
-    flex: 1;
-    background-image: url('./assets/first.webp');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 12px;
-}
-
-.drive-image::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(255, 217, 0, 0.08);
-    border-radius: 8px;
 }
 
 .overlay-logo {

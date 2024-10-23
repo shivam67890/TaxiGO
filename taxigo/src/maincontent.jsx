@@ -1,5 +1,7 @@
 // maincontent.jsx
 import React from 'react';
+import './style.css';
+
 
 const MainContent = () => {
   return (
@@ -13,28 +15,61 @@ const MainContent = () => {
           <button className="price-button">See prices</button>
         </div>
         <div className="right-section">
-          {/* Image placeholder */}
+        
         </div>
       </div>
 
-      <div className="drive-section">
-        <div className="drive-image">
-          {/* Image placeholder */}
-        </div>
-        <div className="drive-content">
-          <h2>Drive when you want, make what you need</h2>
-          <p>
-            Make money on your schedule with deliveries or rides—or both. You can use your own car or choose a rental through TaxiGO.
-          </p>
-          <div className="cta-buttons">
-            <button className="get-started">Get started</button>
-            <a href="#" className="sign-in-link">Already have an account? Sign in</a>
+      <div className="bgwhite">
+        <section className="suggestions">
+          <h2>Suggestions</h2>
+          <div className="card-container">
+            <div className="suggestion-card">
+              <div className="card-content">
+                <h3>Ride</h3>
+                <p>Go anywhere with TaxiGO fast, easy, and affordable.</p>
+                <a href="#" className="details-button">details</a>
+              </div>
+              <img src="src/assets/2homecar.jpg" alt="Car icon" style={{ width: '100px', height: 'auto' }} />
+            </div>
+            <div className="suggestion-card">
+              <div className="card-content">
+                <h3>Reserve</h3>
+                <p>Reserve your ride in advance so that you can enjoy your trip.</p>
+                <a href="#" className="details-button">details</a>
+              </div>
+              <img src="src/assets/3homecal.jpg" alt="Calendar icon" style={{ width: '100px' }} />
+            </div>
           </div>
-        </div>
-      </div>
+        </section>
 
-      <a href="#" className="back-to-top">↑</a>
-    </>
+        <section className="driver-section">
+          <div className="section-image">
+            <img src="src/assets/4homecar.jpg" alt="Driver dashboard view" />
+          </div>
+          <div className="section-content">
+            <h1>Drive when you want, make what you need</h1>
+            <p>
+              Make money on your schedule with deliveries or rides—or both. You can use your own car or
+              choose a rental through TaxiGO.
+            </p>
+            <a href="#" className="get-started">get started</a>
+          </div>
+        </section>
+
+        <section className="business-section">
+          <div className="section-content">
+            <h2>The TaxiGO you know, reimagined for business</h2>
+            <p>
+              TaxiGO for Business is a platform for managing global rides and meals, and local deliveries, for
+              companies of any size.
+            </p>
+            <a href="#" className="get-started">get started</a>
+          </div>
+          <div className="section-image">
+            <img src="src/assets/5homecar.jpg" alt="Business illustration" />
+          </div>
+        </section>
+      </div></>
   );
 };
 

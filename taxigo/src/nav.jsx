@@ -33,9 +33,10 @@ const Nav = () => {
         <div className="nav-actions">
           <span className="language">EN</span>
           <span className="help">Help</span>
-          <div className="auth-buttons">
-            <span className="login">Log in</span>
-            <button className="sign-up">Sign up</button>
+     <div className="auth-buttons">
+              <Link to="/login">
+              <button className="sign-up">Sign up</button>
+            </Link>
           </div>
         </div>
       )}

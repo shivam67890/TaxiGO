@@ -8,7 +8,7 @@ import MapComponent from './mapbox.jsx';
 import PaymentPage from './paymentpage.jsx';  // Import the PaymentPage
 import BusinessPage from './buisseness.jsx'; // Import the BusinessPage
 import Drivepage from './drive.jsx'; 
-
+import Login from './login.jsx';
 const App = () => {
   return (
     <Router>
@@ -19,6 +19,7 @@ const App = () => {
           <Route path="/ride" element={<TaxiGoRidePage />} />
           <Route path="/map" element={<MapComponent />} />
           <Route path="/payment" element={<PaymentPage />} /> {/* New route for payment */}
+          <Route path="login" element={<Login />} /> {/* New route for login */}
           <Route path="/business" element={<BusinessPage />} /> {/* New route for business */}
           <Route path="/drive" element={<Drivepage />} /> 
         </Routes>
