@@ -5,7 +5,7 @@
   padding: 110px;
   gap: 15px;
   height: 70vh;
-  background-color: #fdf6e3;
+  background-color: #3c3c3c;
 }
 
 .form-section, .ride-details-section {
@@ -13,7 +13,7 @@
   background-color: #fff9e6;
   padding: 25px;
   border-radius: 10px;
-  border: 1px solid red;
+  border: 2px solid red;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -84,10 +84,10 @@
 
 .map-section {
   flex-grow: 1; /* Allow the map section to grow and take available space */
-  height: 100%; /* Ensure the map section takes the full height */
-  background-color: #e6f7ff; /* Light blue background for the map section */
+  height: 102%; /* Ensure the map section takes the full height */
+  background-color: #65b1d5; /* Light blue background for the map section */
   border-radius: 10px;
-  border: 1px solid #ccc;
+  border: 3px solid #00e6ff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden; /* Ensure the map doesn't overflow its container */
 }

@@ -6,6 +6,7 @@ import './style.css';
 const MainContent = () => {
   return (
     <>
+    
       <div className="container">
         <div className="left-section">
           <h1>Go anywhere with TaxiGO</h1>
@@ -13,6 +14,7 @@ const MainContent = () => {
           <input type="text" placeholder="Enter location" />
           <input type="text" placeholder="Enter destination" />
           <button className="price-button">See prices</button>
+          <img src="src/assets/sec.jpg" alt="" />
         </div>
         <div className="right-section">
         
@@ -68,6 +70,7 @@ const MainContent = () => {
           <div className="section-image">
             <img src="src/assets/5homecar.jpg" alt="Business illustration" />
           </div>
+          
         </section>
       </div></>
   );

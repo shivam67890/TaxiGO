@@ -4,8 +4,8 @@ import { Link, useLocation } from 'react-router-dom';
 import logo from './assets/logo.png';
 
 const Nav = () => {
-  const location = useLocation();
-  const isRidePage = location.pathname === '/ride';
+  const location = useLocation();//current url
+  const isRidePage = location.pathname === '/ride'; //true or false
 
   return (
     <nav className={isRidePage ? 'nav-ride' : 'nav-default'} role="navigation">
