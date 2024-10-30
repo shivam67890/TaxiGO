@@ -1,11 +1,27 @@
-// nav.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from './assets/logo.png';
+import './style.css';
 
 const Nav = () => {
-  const location = useLocation();//current url
-  const isRidePage = location.pathname === '/ride'; //true or false
+  const location = useLocation();
+  const isRidePage = location.pathname === '/ride';
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const navbar = document.querySelector('nav');
+      if (window.scrollY > 50) {
+        navbar.classList.add('transparent');
+      } else {
+        navbar.classList.remove('transparent');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <nav className={isRidePage ? 'nav-ride' : 'nav-default'} role="navigation">
@@ -28,13 +44,12 @@ const Nav = () => {
           </>
         )}
       </ul>
-      {/* Remove nav-actions for ride page */}
       {!isRidePage && (
         <div className="nav-actions">
           <span className="language">EN</span>
           <span className="help">Help</span>
-     <div className="auth-buttons">
-              <Link to="/login">
+          <div className="auth-buttons">
+            <Link to="/login">
               <button className="sign-up">Sign up</button>
             </Link>
           </div>

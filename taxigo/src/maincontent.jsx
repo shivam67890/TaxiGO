@@ -3,10 +3,10 @@ import React from 'react';
 import './style.css';
 
 
+
 const MainContent = () => {
   return (
     <>
-    
       <div className="container">
         <div className="left-section">
           <h1>Go anywhere with TaxiGO</h1>
@@ -14,11 +14,13 @@ const MainContent = () => {
           <input type="text" placeholder="Enter location" />
           <input type="text" placeholder="Enter destination" />
           <button className="price-button">See prices</button>
-          <img src="src/assets/sec.jpg" alt="" />
+          <div className='overlayimg'>
+          <img src="src/assets/carnobg.png" alt="" className='changcss'/>
+          </div>
         </div>
         <div className="right-section">
-        
         </div>
+        
       </div>
 
       <div className="bgwhite">
@@ -29,7 +31,6 @@ const MainContent = () => {
               <div className="card-content">
                 <h3>Ride</h3>
                 <p>Go anywhere with TaxiGO fast, easy, and affordable.</p>
-                <a href="#" className="details-button">details</a>
               </div>
               <img src="src/assets/2homecar.jpg" alt="Car icon" style={{ width: '100px', height: 'auto' }} />
             </div>
@@ -37,7 +38,6 @@ const MainContent = () => {
               <div className="card-content">
                 <h3>Reserve</h3>
                 <p>Reserve your ride in advance so that you can enjoy your trip.</p>
-                <a href="#" className="details-button">details</a>
               </div>
               <img src="src/assets/3homecal.jpg" alt="Calendar icon" style={{ width: '100px' }} />
             </div>
@@ -69,10 +69,12 @@ const MainContent = () => {
           </div>
           <div className="section-image">
             <img src="src/assets/5homecar.jpg" alt="Business illustration" />
+            
           </div>
-          
         </section>
-      </div></>
+        
+      </div>
+      </>
   );
 };
 

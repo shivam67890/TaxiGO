@@ -3,7 +3,7 @@ body, html {
     padding: 0;
     font-family: 'Arial', sans-serif;
     color: #333;
-    background-color: #ffed87;
+    background-color: #ffffff;
     scroll-behavior: smooth;
 }
 .suggestions {
@@ -103,9 +103,15 @@ nav {
     position: fixed;
     width: 100%;
     top: 0;
+    height: 36px;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
+nav.transparent {
+    background-color: rgba(147, 144, 106, 0.5);
+    color: #000000 !important;
+  }
+  
 /* Logo adjustments */
 .logo-img {
     height: 40px;
@@ -128,18 +134,33 @@ nav ul {
 nav ul li {
     margin-right: 1.5rem;
     font-weight: bold;
-    color: #ffffff;
+    color: inherit;
 }
 
 /* Add styles for anchor (<a>) inside <li> */
 nav ul li a {
-    color: #ffffff;  /* Make the link color the same as li */
-    text-decoration: none;  /* Remove underline from the link */
-    font-weight: bold; /* Ensure consistency with other li text */
+    position: relative; /* Ensure the pseudo-element is positioned relative to the link */
+    color: inherit; /* Inherit color from nav */
+    text-decoration: none; /* Remove default underline */
+    padding-bottom: 2px; /* Space for the underline */
+    transition: color 0.3s ease; /* Smooth transition for color */
 }
-
-nav ul li a:hover {
-    color: #FFD700;  /* Add hover effect if needed */
+.overlayimg{
+    position: absolute;
+    left: 51%;
+    top: 9%;
+    width: 50%;
+    height: 100vh; /* Full viewport height */
+    background-image: url('./assets/home-banner-background.png'); /* Background image */
+    background-size: cover;
+    background-position: center; 
+}
+.overlayimg .changcss {
+    position: absolute; /* Position the image absolutely within the container */
+    top: 18%; /* Adjust the top position as needed */
+    left: -16%; /* Adjust the left position as needed */
+    width: 920px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
 }
 
 /* Adjustments for nav actions */
@@ -148,6 +169,21 @@ nav ul li a:hover {
     align-items: center;
     gap: 1rem; /* Adds spacing between the nav actions */
     margin-right: 5rem; /* Moves actions closer to the right */
+}nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    border-radius: 50px;
+    height: 3px; /* Height of the underline */
+    background-color: rgb(241, 178, 6); /* Color of the underline */
+    transition: width 0.5s ease; /* Smooth transition for width */
+}
+
+/* Animate the underline on hover */
+nav ul li a:hover::after {
+    width: 100%; /* Expand the underline to full width */
 }
 
 .nav-actions span {
@@ -207,6 +243,9 @@ button:hover {
 
 .left-section {
     flex: 1;
+    position: relative;
+    top: 18px;
+    left: 1%;
     background-color: rgba(255, 255, 255, 0.9);
     color: #333;
     padding: 5rem 2rem;
@@ -224,10 +263,10 @@ button:hover {
 
 }
 .left-section img{
-    width: 550px;
-    height: 400px;
+    width: 500px;
+    height: 600px;
     position: absolute;
-    left: 50%;
+    left: 56%;
     top: 16%;
 }
 .left-section p {
