@@ -5,25 +5,40 @@
   padding: 110px;
   gap: 15px;
   height: 70vh;
-  background-color: #3c3c3c;
+  background-color: #1a1a1a;
 }
 
 .form-section, .ride-details-section {
-  width: 350px; /* Fixed width */
-  background-color: #fff9e6;
+  width: 350px;
+  background-color: #f2de6d;
   padding: 25px;
   border-radius: 10px;
-  border: 2px solid red;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #000000;
+  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
 }
 
 .form-section h2, .ride-details-section h2 {
   font-family: 'Arial', sans-serif;
-  color: #333;
+  color: #000000;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .form-group {
-  margin-bottom: 15px;  
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  color: #000000;
+  font-weight: bold;
+}
+
+.form-group input {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  padding: 8px;
+  width: 100%;
 }
 
 .ride-options {
@@ -34,70 +49,132 @@
 
 .ride-option {
   padding: 20px;
-  border: 2px solid #ccc;
+  border: 2px solid #000000;
   border-radius: 10px;
-  background-color: #fff;
+  gap: 20px;
+
+  background-color: #ffffff;
   cursor: pointer;
-  transition: border-color 0.3s, background-color 0.3s;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .ride-option:hover {
-  border-color: #007bff;
-  background-color: #f0f8ff;
+  border-color: #000000;
+  background-color: #ffffff;
+  transform: translateY(-2px);
 }
 
 .ride-option:active {
-  border-color: #0056b3;
-  background-color: #e0e8ff;
+  background-color: #ffd700;
+  transform: translateY(0);
 }
 
 .ride-option h3 {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  color: #333;
+  color: #000000;
+  font-weight: bold;
 }
 
 .ride-option p {
   margin: 5px 0 0;
   font-family: 'Arial', sans-serif;
-  color: #666;
+  color: #000000;
 }
 
 .back-btn {
   margin-bottom: 20px;
   padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #000000;
+  color: #ffd700;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .back-btn:hover {
-  background-color: #0056b3;
+  background-color: #333333;
+  transform: translateY(-2px);
 }
 
 .back-btn:active {
-  background-color: #003f7f;
+  background-color: #000000;
+  transform: translateY(0);
+}
+
+.search-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #000000;
+  color: #ffd700;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.search-btn:hover {
+  background-color: #333333;
+  transform: translateY(-2px);
+}
+
+.search-btn:disabled {
+  background-color: #666666;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .map-section {
-  flex-grow: 1; /* Allow the map section to grow and take available space */
-  height: 102%; /* Ensure the map section takes the full height */
-  background-color: #65b1d5; /* Light blue background for the map section */
+  flex-grow: 1;
+  height: 102%;
+  background-color: #1a1a1a;
   border-radius: 10px;
-  border: 3px solid #00e6ff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden; /* Ensure the map doesn't overflow its container */
+  border: 3px solid #ffd700;
+  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
+  overflow: hidden;
 }
+
 .ride-option img {
   width: 120px;
-  position: absolute;
   height: 60px;
-  left: 23%;
+  position: absolute;
+  left: 63%;
+  top: 50%;
+  transform: translateY(-50%);
 }
-.map-container {
-  width: 100%;
-  height: 100%;
+
+.suggestions-list {
+  background-color: #fff7cc;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.suggestions-list li {
+  padding: 8px;
+  cursor: pointer;
+  color: #000000;
+}
+
+.suggestions-list li:hover {
+  background-color: #ffe44d;
+}
+
+.error-message {
+  color: #ff0000;
+  background-color: #fff7cc;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ff0000;
 }

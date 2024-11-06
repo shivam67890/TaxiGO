@@ -5,6 +5,10 @@ body, html {
     color: #333;
     background-color: #ffffff;
     scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    display: none;
 }
 .suggestions {
     padding: 2rem;
@@ -98,6 +102,7 @@ nav {
     color: #ffffff;
     padding: 1rem 1rem;  /* Reduced padding on left */
     display: flex;
+    font-style: Sans-serif;
     justify-content: space-between;
     align-items: center;
     position: fixed;
@@ -157,9 +162,9 @@ nav ul li a {
 }
 .overlayimg .changcss {
     position: absolute; /* Position the image absolutely within the container */
-    top: 18%; /* Adjust the top position as needed */
-    left: -16%; /* Adjust the left position as needed */
-    width: 920px; /* Adjust the width as needed */
+    top: -16%; /* Adjust the top position as needed */
+    left: -28%; /* Adjust the left position as needed */
+    width: 890px; /* Adjust the width as needed */
     height: auto; /* Maintain aspect ratio */
 }
 

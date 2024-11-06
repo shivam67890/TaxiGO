@@ -1,7 +1,7 @@
 // maincontent.jsx
 import React from 'react';
 import './style.css';
-
+import ScrollingBanner from './scrolling.jsx';
 
 
 const MainContent = () => {
@@ -15,7 +15,7 @@ const MainContent = () => {
           <input type="text" placeholder="Enter destination" />
           <button className="price-button">See prices</button>
           <div className='overlayimg'>
-          <img src="src/assets/carnobg.png" alt="" className='changcss'/>
+          <img src="src/assets/logonobg.png" alt="" className='changcss'/>
           </div>
         </div>
         <div className="right-section">
@@ -72,10 +72,10 @@ const MainContent = () => {
             
           </div>
         </section>
-        
+        <ScrollingBanner/>
       </div>
       </>
   );
 };
 
-export default MainContent;
+export default MainContent; 

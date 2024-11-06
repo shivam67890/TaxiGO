@@ -18,7 +18,7 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false); // Set loading to false after 3 seconds
-    }, 1200); // Adjust the duration as needed
+    }, 2200); // Adjust the duration as needed
 
     return () => clearTimeout(timer); // Cleanup on unmount
   }, []);

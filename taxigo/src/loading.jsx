@@ -12,7 +12,7 @@ const Loading = () => {
   useEffect(() => {
     // Loading animation for progress
     gsap.to({}, {
-      duration: 1, // Total time for loading animation
+      duration: 2, // Total time for loading animation
       onUpdate: function () {
         setProgress(Math.round(this.progress() * 100));
       },
@@ -64,7 +64,9 @@ const Loading = () => {
     <div ref={container} style={{ position: "relative", margin: 'auto', width: "300px", height: "300px", border: "1px solid white", overflow: "hidden" }}>
       {/* Centered loading text and progress bar */}
       <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", textAlign: 'center', fontFamily: "cursive", fontSize: "16px" }}>
-        <div>Loading_{progress}%</div>
+        <div>
+          <img src="6logo.jpg" alt="" style={{height:'100px', width:'auto'}} />
+          Entering_taxi_{progress}%</div>
         <div style={{ width: '200px', height: '10px', border: '2px solid white', marginTop: '10px' }}>
           <div style={{ width: `${progress}%`, height: '100%', borderRadius: '4px', backgroundColor: 'orange' }}></div>
         </div>

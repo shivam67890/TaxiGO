@@ -26,7 +26,9 @@ const Nav = () => {
   return (
     <nav className={isRidePage ? 'nav-ride' : 'nav-default'} role="navigation">
       <div className="logo">
-        <img src={logo} alt="TaxiGO" className="logo-img" />
+      <Link to="/">
+          <img src={logo} alt="TaxiGO" className="logo-img" />
+        </Link>
       </div>
       <ul>
         {isRidePage ? (
@@ -36,7 +38,7 @@ const Nav = () => {
             <li><Link to="/rental">Rental</Link></li>
           </>
         ) : (   
-          <>
+          <>                        
             <li><Link to="/ride">Ride</Link></li>
             <li><Link to="/drive">Drive</Link></li>
             <li><Link to="/business">Business</Link></li>
