@@ -5,7 +5,7 @@ const ScrollingBanner = () => {
   return (
     <div className="scrolling-banner">
       <div className="scrolling-text">
-        <span>Thank you for choosing TaxiGO </span>
+        <span>Thank you for choosing TaxiGO</span>
       </div>
     </div>
   );

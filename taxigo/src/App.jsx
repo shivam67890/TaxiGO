@@ -10,7 +10,7 @@ import BusinessPage from './buisseness.jsx'; // Import the BusinessPage
 import Drivepage from './drive.jsx'; 
 import Loading from './loading.jsx';
 import Login from './login.jsx';
-
+import About from './about.jsx';
 const App = () => {
   const [loading, setLoading] = useState(true);
 
@@ -39,6 +39,7 @@ const App = () => {
               <Route path="login" element={<Login />} /> {/* New route for login */}
               <Route path="/business" element={<BusinessPage />} /> {/* New route for business */}
               <Route path="/drive" element={<Drivepage />} /> 
+              <Route path="/about" element={<About />} />
             </Routes>
           </>
         )}

@@ -74,6 +74,7 @@ const MainContent = () => {
         </section>
         <ScrollingBanner/>
       </div>
+      
       </>
   );
 };

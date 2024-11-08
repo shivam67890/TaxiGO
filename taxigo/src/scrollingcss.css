@@ -1,13 +1,13 @@
 .scrolling-banner {
   background-color: #000000; /* Dark green color */
   color: white;
-  height: 194.9px;
+  height: 197.9px;
   font-size: 12rem;
   font-weight: bold;
   white-space: nowrap;
   overflow: hidden;
   position: relative;
-  width: 100%;
+  width: 110%;
   padding: 1rem 0;
   text-align: center;
   margin: 2rem 0; /* Add margin to separate from other sections */
