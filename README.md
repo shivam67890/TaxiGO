@@ -1,6 +1,6 @@
 # Taxigo
 
-Taxigo is a modern web application built using React.js, Vite, HTML, CSS, Tailwind CSS, and Mapbox API. It allows users to book and manage taxi rides, providing a seamless and user-friendly experience.
+Taxigo is a modern website built using React.js, Vite, HTML, CSS, Tailwind CSS, and Mapbox API. It allows users to book and manage taxi rides, providing a seamless and user-friendly experience.
 
 ## Homepage
 
@@ -21,10 +21,6 @@ The Taxigo homepage features a clean and intuitive design, showcasing the app's 
 - Frontend: HTML,Css,React.js, Vite, Tailwind CSS
 - UI/UX: figma ,canva..
 - Mapping and Geolocation: Mapbox API
-- Payment Processing: Stripe
-- Authentication: Firebase Authentication
-
-## Getting Started
 
 ### Prerequisites
 
