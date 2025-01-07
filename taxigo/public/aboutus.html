@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .about-section {
+            padding: 80px 0;
+            background: white;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease forwards;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about-content h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: #FFD700;
+            animation: lineGrow 0.6s ease forwards 0.6s;
+        }
+
+        @keyframes lineGrow {
+            to {
+                width: 100px;
+            }
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease forwards 0.2s;
+        }
+
+        /* Team Section Styles */
+        .team-section {
+            padding: 60px 0;
+            background: #f8f8f8;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #FFD700;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        .member-image {
+            width: 180px;
+            height: 180px;
+            margin: 30px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #FFD700;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover .member-image {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.1);
+        }
+
+        .member-info {
+            padding: 20px;
+            text-align: center;
+            background: white;
+        }
+
+        .member-name {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover .member-name {
+            transform: scale(1.05);
+            color: #FFD700;
+        }
+
+        .member-role {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .member-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+            padding-bottom: 10px;
+        }
+
+        .member-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.4s ease forwards 0.6s;
+        }
+
+        .member-links a:hover {
+            color: #FFD700;
+            transform: translateY(-3px);
+        }
+
+        .member-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FFD700;
+            transition: width 0.3s ease;
+        }
+
+        .member-links a:hover::after {
+            width: 100%;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .team-member:nth-child(1) { animation-delay: 0.2s; }
+        .team-member:nth-child(2) { animation-delay: 0.4s; }
+        .team-member:nth-child(3) { animation-delay: 0.6s; }
+        .team-member:nth-child(4) { animation-delay: 0.8s; }
+
+        @media (max-width: 768px) {
+            .about-content h1 {
+                font-size: 2rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .member-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h1>About Taxigo</h1>
+                <p>Welcome to Taxigo, a college project aimed at revolutionizing urban transportation through a user-friendly cab booking platform. Our goal is to create an efficient and reliable system that connects passengers with drivers seamlessly.</p>
+                <p>This project was developed as part of our final year computer science curriculum, focusing on modern web technologies and real-world application development. We've implemented features like real-time booking, GPS tracking, and secure payment integration to create a comprehensive solution.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">Meet Our Team</h2>
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="./kanpur.jpg" alt="Team Member 1">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Shivanshu Khushwaha</h3>
+                        <p class="member-role">User Authentication</p>
+                        <div class="member-links">
+                            <a href="#" title="GitHub">🔗</a>
+                            <a href="#" title="LinkedIn">📊</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="./shivam.jpg" alt="Team Member 2">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Shivam Shukla</h3>
+                        <p class="member-role">API integration ,cab tracking</p>
+                        <div class="member-links">
+                            <a href="#" title="GitHub">🔗</a>
+                            <a href="#" title="LinkedIn">📊</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="./ritin.jpg" alt="Team Member 3">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Ritin Chauhan</h3>
+                        <p class="member-role">UI/UX Designer</p>
+                        <div class="member-links">
+                            <a href="#" title="GitHub">🔗</a>
+                            <a href="#" title="LinkedIn">📊</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="./sayan.jpg" alt="Team Member 4">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Sayan Mandal</h3>
+                        <p class="member-role">payment management</p>
+                        <div class="member-links">
+                            <a href="#" title="GitHub">🔗</a>
+                            <a href="#" title="LinkedIn">📊</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
